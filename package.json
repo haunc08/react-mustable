@@ -1,5 +1,5 @@
 {
-  "name": "react-mustable",
+  "name": "@cutetn/react-mustable",
   "type": "module",
   "version": "1.0.0",
   "description": "A package to work with React Typescript mutable states.",
@@ -30,5 +30,6 @@
     "react": "^18.2.0",
     "reflect-metadata": "^0.1.13",
     "typescript": "^5.0.4"
-  }
+  },
+  "devDependencies": {}
 }
