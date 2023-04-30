@@ -13,6 +13,7 @@ export function createReactMustable<T extends MustableBase>(
     throw new Error("Cannot create React Mustable as the referred item is not an instance of MustableBase");
   }
 
+  //@ts-ignore
   const mustableMembers: TMustableMemberData = Reflect.getMetadata(MUSTABLE_SYMBOL, instance) ?? {};
   const result: any = {
     version: 0,

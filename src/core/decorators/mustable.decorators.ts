@@ -23,6 +23,7 @@ export function mustable(options: Partial<MustableOptions> = {}) {
   return function (target: any, propertyKey: string, descriptor?: PropertyDescriptor) {
     if (typeof target.constructor !== "function") return;
 
+    //@ts-ignore
     const mustableMembers: TMustableMemberData = Reflect.getMetadata(MUSTABLE_SYMBOL, target) ?? {};
     let memberType: TMustableMemberTypes;
 
@@ -32,6 +33,7 @@ export function mustable(options: Partial<MustableOptions> = {}) {
 
     if (memberType) {
       mustableMembers[propertyKey] = { memberType, ...fullOptions };
+      //@ts-ignore
       Reflect.defineMetadata(MUSTABLE_SYMBOL, mustableMembers, target);
     }
   };
