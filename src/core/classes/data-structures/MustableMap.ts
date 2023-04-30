@@ -7,7 +7,7 @@ type TMapEntry<TKey, TValue> = Iterable<[TKey, TValue]>;
 export class MustableMap<TKey, TValue> extends MustableBase {
   private internalMap: Map<TKey, TValue>;
 
-  constructor(initialEntries: TMapEntry<TKey, TValue>) {
+  constructor(initialEntries?: TMapEntry<TKey, TValue>) {
     super();
     this.internalMap = new Map(initialEntries);
   }
