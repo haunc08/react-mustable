@@ -1,5 +1,5 @@
-import { immustable, mustable } from "../../decorators/index";
-import { sameSnapshotsCheckers } from "../../index";
+import { mustable, immustable } from "../../decorators/index";
+import { sameSnapshotsCheckers } from "../../common/snapshots-comparers.utils";
 import { MustableBase } from "../base/MustableBase.class";
 
 export class MustableArray<TItem> extends MustableBase {

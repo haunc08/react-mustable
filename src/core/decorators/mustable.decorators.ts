@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { MUSTABLE_SYMBOL } from "../common/metadata.constants";
-import { TMustableMemberTypes, TMustableMemberData, MustableOptions } from "../common/types.constants";
 import { DEFAULT_MUSTABLE_OPTIONS } from "../common/utils.constants";
+import { TMustableMemberTypes, TMustableMemberData, MustableOptions } from "../common/types.constants";
 import { sameSnapshotsCheckers } from "../common/snapshots-comparers.utils";
 
 function adjustMustableOptions(options: Partial<MustableOptions> = {}) {
@@ -37,11 +37,4 @@ export function mustable(options: Partial<MustableOptions> = {}) {
       Reflect.defineMetadata(MUSTABLE_SYMBOL, mustableMembers, target);
     }
   };
-}
-
-/**
- * This decorator does nothing to the targeted member. However, it is recommended to decorate this in order to ensure no member is missing its (im)mustable decorator.
- */
-export function immustable() {
-  return function (_target: any, _propertyKey: string, _descriptor?: PropertyDescriptor) {};
 }
