@@ -1,4 +1,5 @@
 import { immustable, mustable } from "../../decorators/index";
+import { sameSnapshotsCheckers } from "../../index";
 import { MustableBase } from "../base/MustableBase.class";
 
 export class MustableArray<TItem> extends MustableBase {
@@ -22,6 +23,16 @@ export class MustableArray<TItem> extends MustableBase {
   @immustable()
   shallowClone(): MustableArray<TItem> {
     return new MustableArray(this.internalArray);
+  }
+
+  @mustable({
+    snapshot: (instance, args) => instance.at(args![0]),
+    sameSnapshotsChecker: sameSnapshotsCheckers.isShallowSame,
+  })
+  set(index: number, value: TItem) {
+    if (index >= this.internalArray.length) return;
+
+    this.internalArray[index] = value;
   }
 
   //#region Built-in methods wrappers
