@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import React, { useCallback } from "react";
+import React from "react";
 import { MustableBase } from "../../classes/base/MustableBase.class";
 import { TMustableFactory, TNullableMustableFactory, TReactMustable, TReactMustableRegistry } from "../common/types.constants";
 import { createReactMustable } from "../common/createReactMustable.helper";
@@ -40,7 +40,7 @@ export function useMustableRegistry(): TReactMustableRegistry {
     if (instance) reactMustableInstancesMap.current?.delete(instance);
   }, []);
 
-  const useNullableMemo = useCallback(
+  const useNullableMustable = React.useCallback(
     <T extends MustableBase>(factory: TNullableMustableFactory<T>, deps: React.DependencyList = []) => {
       const rawInstance = React.useRef<T | TNullish>();
 
@@ -59,25 +59,25 @@ export function useMustableRegistry(): TReactMustableRegistry {
     [removeReactMustableInstance, registerReactMustableInstance]
   );
 
-  const useMemo = React.useCallback(
+  const useMustable = React.useCallback(
     <T extends MustableBase>(factory: TMustableFactory<T>, deps: React.DependencyList = []) => {
-      const result = useNullableMemo(factory, deps);
+      const result = useNullableMustable(factory, deps);
       // TODO: Throw proper errors
       if (result == null) throw new Error(`Factory produces a ${result} value.`);
 
       return result;
     },
-    [useNullableMemo]
+    [useNullableMustable]
   );
 
   return React.useMemo(
     () => ({
       register: registerReactMustableInstance,
       remove: removeReactMustableInstance,
-      useNullableMemo,
-      useMemo,
+      useNullableMustable,
+      useMustable,
       version,
     }),
-    [registerReactMustableInstance, removeReactMustableInstance, useNullableMemo, useMemo, version]
+    [registerReactMustableInstance, removeReactMustableInstance, useNullableMustable, useMustable, version]
   );
 }

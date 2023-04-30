@@ -1,5 +1,5 @@
 import React from "react";
-import { MustableBase } from "../../classes";
+import { MustableBase } from "../../classes/index";
 import { TNullish } from "../../common/types.constants";
 
 export type TReactMustable<T extends MustableBase> = Omit<T, "version"> & { readonly version: number; readonly instance: T };
@@ -34,7 +34,7 @@ export type TReactMustableRegistry = {
    * @param deps Similar to React useEffect, useMemo,... dependencies.
    * @returns A registered React Mustable (with the ref being kept).
    */
-  useMemo: <T extends MustableBase>(factory: TMustableFactory<T>, deps: React.DependencyList) => TReactMustable<T>;
+  useMustable: <T extends MustableBase>(factory: TMustableFactory<T>, deps: React.DependencyList) => TReactMustable<T>;
 
   /**
    * Same as ***useMemo*** but allow ***null*** and ***undefined***.
@@ -42,7 +42,7 @@ export type TReactMustableRegistry = {
    * @param deps Similar to React useEffect, useMemo,... dependencies.
    * @returns A registered React Mustable (with the ref being kept). Return the instance itself it the value was null or undefined.
    */
-  useNullableMemo: <T extends MustableBase>(
+  useNullableMustable: <T extends MustableBase>(
     factory: TNullableMustableFactory<T>,
     deps: React.DependencyList
   ) => TReactMustable<T> | TNullish;

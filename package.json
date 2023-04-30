@@ -3,10 +3,16 @@
   "type": "module",
   "version": "1.0.0",
   "description": "A package to work with React Typescript mutable states.",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "ts-node --experimental-specifier-resolution=node ./index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc || npm run fix-dist-imports",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fix-dist-imports": "node fix-dist-imports.js",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -31,5 +37,10 @@
     "reflect-metadata": "^0.1.13",
     "typescript": "^5.0.4"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
 }

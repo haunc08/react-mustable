@@ -1,5 +1,5 @@
-import { sameSnapshotsCheckers } from "../../common";
-import { immustable, mustable } from "../../decorators";
+import { sameSnapshotsCheckers } from "../../common/index";
+import { immustable, mustable } from "../../decorators/index";
 import { MustableBase } from "../base/MustableBase.class";
 
 type TMapEntry<TKey, TValue> = Iterable<[TKey, TValue]>;

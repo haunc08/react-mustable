@@ -1,4 +1,4 @@
-import { immustable, mustable } from "../../decorators";
+import { immustable, mustable } from "../../decorators/index";
 import { MustableBase } from "../base/MustableBase.class";
 
 export class MustableArray<TItem> extends MustableBase {

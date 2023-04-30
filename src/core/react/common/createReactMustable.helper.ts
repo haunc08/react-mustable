@@ -1,4 +1,5 @@
-import { MustableBase } from "../../classes";
+import "reflect-metadata";
+import { MustableBase } from "../../classes/index";
 import { MUSTABLE_SYMBOL } from "../../common/metadata.constants";
 import { TMustableMemberData, TMustableMemberDatum, TMustableMemberTypes } from "../../common/types.constants";
 import { TReactMustable } from "./types.constants";
