@@ -1,7 +1,7 @@
 {
   "name": "@cutetn/react-mustable",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A package to work with React Typescript mutable states.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc || npm run fix-dist-imports",
+    "build": "tsc && npm run fix-dist-imports",
     "test": "echo \"Error: no test specified\" && exit 1",
     "fix-dist-imports": "node fix-dist-imports.js",
     "prepare": "npm run build"
