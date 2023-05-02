@@ -23,9 +23,8 @@ export function createReactMustable<T extends MustableBase>(
   const mutateValue = (fn: Function, mustableMember: TMustableMemberDatum | undefined, methodArgs?: any[]) => {
     setVersion((prev) => {
       // NOTE: This is to prevent React strict mode error.
-      if (prev < result.version) {
-        return result.version;
-      }
+      //@ts-ignore
+      if (fn.version != null) return fn.version;
 
       const snapshotBefore = mustableMember?.snapshot?.(instance, methodArgs);
       fn();
@@ -37,6 +36,8 @@ export function createReactMustable<T extends MustableBase>(
 
       const newVersion = prev + 1;
       result.version = newVersion;
+      //@ts-ignore
+      fn.version = newVersion;
       return newVersion;
     });
   };

@@ -5,12 +5,7 @@ export abstract class MustableBase {
   version: void = VOID_VALUE;
 
   /** @deprecated Don't use the field name ***instance*** in your class as it is preserved to ***Mustable***'s internal logics. */
-  private readonly _instance: MustableBase;
-  get instance(): MustableBase {
-    return this._instance;
-  }
-
-  constructor() {
-    this._instance = this;
+  get instance(): this {
+    return this;
   }
 }
