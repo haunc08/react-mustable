@@ -1,7 +1,7 @@
 {
   "name": "@cutetn/react-mustable",
   "type": "module",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A package to work with React Typescript mutable states.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

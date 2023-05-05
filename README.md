@@ -2,7 +2,41 @@
 
 A package to work with React Typescript **mutable states**.
 
+----
+
+## Table of Content
+
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [1. Mustable Classes](#1-mustable-classes)
+    - [1.1. `MustableBase`](#11-mustablebase)
+    - [1.2. Custom Mustable Class](#12-custom-mustable-class)
+    - [1.3. `mustable` decorator](#13-mustable-decorator)
+      - [1.3.1. Mustable methods](#131-mustable-methods)
+      - [1.3.2. Mustable Fields and Properties](#132-mustable-fields-and-properties)
+      - [1.3.3. `isMustableFunction` option](#133-ismustablefunction-option)
+      - [1.3.4. `snapshot` option](#134-snapshot-option)
+      - [1.3.5. `sameSnapshotsChecker` option](#135-samesnapshotschecker-option)
+    - [1.4. `immustable` decorator](#14-immustable-decorator)
+    - [1.5. Built-in Mustable Classes](#15-built-in-mustable-classes)
+  - [2. Using Mustable states](#2-using-mustable-states)
+    - [2.1. `useMustableRegistry` hook](#21-usemustableregistry-hook)
+    - [2.2. `register` and `remove` functions](#22-register-and-remove-functions)
+    - [2.3. `useMustable` and `useNullableMustable` hook](#23-usemustable-and-usenullablemustable-hook)
+    - [2.4. Mutating states using mustable members](#24-mutating-states-using-mustable-members)
+      - [2.4.1. NOT the same behavior as React states](#241-not-the-same-behavior-as-react-states)
+      - [2.4.2. Working normally with React Strict Mode](#242-working-normally-with-react-strict-mode)
+      - [2.4.3. `version` field for dependencies list](#243-version-field-for-dependencies-list)
+      - [2.4.4. `instance` field to work with other logics](#244-instance-field-to-work-with-other-logics)
+      - [2.4.5. Updating nested mustable instance](#245-updating-nested-mustable-instance)
+      - [2.4.6. Async operations are NOT supported](#246-async-operations-are-not-supported)
+- [License](#license)
+
+----
+
 ## Introduction
+
 ​	The benefits of **immutability** is widely proven and accepted in programming world. Although the fact is not deniable, it comes with a cost on performance. 
 
 ​	**React-mustable** tries to break the [rule of immutability of React](https://react.dev/learn/updating-objects-in-state). It offers syntactic sugar to work with mutable states, while keeping them works as perfectly as React states.
