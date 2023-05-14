@@ -62,6 +62,23 @@ const isDeepSame: TSameSnapshotsChecker = (snapshotBefore, snapshotAfter): boole
     case "[object RegExp]":
       return snapshotBefore.toString() === snapshotAfter.toString();
 
+    case "[object Set]":
+    case "[object Map]": {
+      if (snapshotBefore.size !== snapshotAfter.size) {
+        return false;
+      }
+      for (const value of snapshotBefore) {
+        if (snapshotBefore instanceof Map) {
+          if (!snapshotAfter.has(value[0]) || !isDeepSame(value[1], snapshotAfter.get(value[0]))) {
+            return false;
+          }
+        } else if (!snapshotAfter.has(value)) {
+          return false;
+        }
+      }
+      return true;
+    }
+
     default:
       return snapshotBefore === snapshotAfter;
   }
